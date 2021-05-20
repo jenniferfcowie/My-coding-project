@@ -32,11 +32,13 @@ function formatDate(timestamp) {
 
   function displayForecast() {
     let forecastElement = document.querySelector("#forecast");
+
+    let days = ["Thu", "Fri", "Sat"];
+
 let forecastHTML = `<div class="row">`;
-let days = ["Thu", "Fri", "Sat"];
 days.forEach(function(day) {
   forecastHTML = forecastHTML + `
-            <div class="col-3">
+            <div class="col-2">
             <div>${day}</div>
               <img
               src="http://openweathermap.org/img/wn/50d@2x.png"
@@ -44,7 +46,6 @@ days.forEach(function(day) {
               width="42"/>
               <div>14oC</div>
             </div>
-        </div>
       </div>`;
     
 forecastHTML = forecastHTML + `</div>`;
