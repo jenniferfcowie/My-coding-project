@@ -30,23 +30,26 @@ function formatDate(timestamp) {
     return days[day];
   }
 
-  function displayForecast() {
+
+  function displayForecast(response) {
+    let forecast = response.data.daily;
+
     let forecastElement = document.querySelector("#forecast");
 
-    let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
 
 let forecastHTML = `<div class="row">`;
-days.forEach(function (day) {
+forecast.forEach(function (forecastDay) {
   forecastHTML = forecastHTML + `
   <div class="col-2">
-        <div class="weather-forecast-date">${day}</div>
+        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
         <img
-          src="http://openweathermap.org/img/wn/50d@2x.png"
+          src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
           alt=""
           width="42"
         />
         <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-max"> 18° </span>
+          <span class="weather-forecast-temperature-max"> ${Math.round(forecastDay.temp.max)}° </span>
         </div>
       </div>
   `;
@@ -56,6 +59,12 @@ forecastElement.innerHTML = forecastHTML;
 
 }
  
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "16b011e84ccaeeedc0d35d25c7339c80";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
   
   function displayTemperature(response) {
     let temperatureElement = document.querySelector("#temperature");
@@ -84,7 +93,7 @@ forecastElement.innerHTML = forecastHTML;
   }
   
   function search(city) {
-    let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+    let apiKey = "16b011e84ccaeeedc0d35d25c7339c80";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayTemperature);
   }
@@ -125,6 +134,6 @@ forecastElement.innerHTML = forecastHTML;
   celsiusLink.addEventListener("click", displayCelsiusTemperature);
   
   search("New York");
-  displayForecast();
+
 
  
