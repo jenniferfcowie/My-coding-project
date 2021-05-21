@@ -39,7 +39,8 @@ function formatDate(timestamp) {
 
 
 let forecastHTML = `<div class="row">`;
-forecast.forEach(function (forecastDay) {
+forecast.forEach(function (forecastDay, index) {
+  if (index < 4){
   forecastHTML = forecastHTML + `
   <div class="col-2">
         <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
@@ -52,7 +53,7 @@ forecast.forEach(function (forecastDay) {
           <span class="weather-forecast-temperature-max"> ${Math.round(forecastDay.temp.max)}° </span>
         </div>
       </div>
-  `;
+  `;}
   });
 forecastHTML = forecastHTML + `</div>`;
 forecastElement.innerHTML = forecastHTML;
@@ -136,4 +137,5 @@ function getForecast(coordinates) {
   search("New York");
 
 
- 
+
+   
