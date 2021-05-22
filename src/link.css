@@ -3,11 +3,27 @@ li {
     list-style: none;
 }
 
-.weather-temperature strong {
+.float-left strong {
     font-size: 50px;
 }
 
 
 #date {
     font-size: 15px;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.forecast {
+    background-color: rgb(224, 154, 241);
+    text-align: right;
+    padding-left: 130px;
+}
+
+.form-control {
+    background-color: rgb(224, 154, 241);
+    text-align: centre;
+    padding-left: 400px;
 }

@@ -105,15 +105,7 @@ function getForecast(coordinates) {
     search(cityInputElement.value);
   }
   
-  function displayFahrenheitTemperature(event) {
-    event.preventDefault();
-    let temperatureElement = document.querySelector("#temperature");
-  
-    celsiusLink.classList.remove("active");
-    fahrenheitLink.classList.add("active");
-    let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
-    temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
-  }
+ 
   
   function displayCelsiusTemperature(event) {
     event.preventDefault();
@@ -128,8 +120,7 @@ function getForecast(coordinates) {
   let form = document.querySelector("#search-form");
   form.addEventListener("submit", handleSubmit);
   
-  let fahrenheitLink = document.querySelector("#fahrenheit-link");
-  fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
   
   let celsiusLink = document.querySelector("#celsius-link");
   celsiusLink.addEventListener("click", displayCelsiusTemperature);
