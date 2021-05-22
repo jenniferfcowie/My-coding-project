@@ -18,12 +18,10 @@ body {
 
 .forecast {
     background-color: rgb(224, 154, 241);
-    text-align: right;
-    padding-left: 130px;
+ 
 }
 
 .form-control {
     background-color: rgb(224, 154, 241);
-    text-align: centre;
-    padding-left: 400px;
+   
 }
